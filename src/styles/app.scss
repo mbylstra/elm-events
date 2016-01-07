@@ -1,0 +1,181 @@
+@import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700,400italic,700italic|Source+Code+Pro);
+
+$elm-blue: #60B5CC;
+$body-color: #293c4b;
+
+body, h1, h2, h3, h4, h5, h6 {
+    font-family: "Source Sans Pro", Helvetica, Roboto, Arial, sans-serif;
+}
+
+
+a, a:hover, a:focus, h3, h4, h5, h6 {
+  color: $elm-blue;
+}
+
+h2 {
+  color: $body-color;
+  font-size: 3rem;
+  margin-bottom: 0.5em;
+}
+
+p {
+  line-height: 1.5em;
+  font-size: 17px;
+}
+
+table {
+  font-size: 20px;
+}
+
+body {
+  background-color: white;
+  padding-bottom: 100px;
+}
+
+header {
+  height: 180px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  text-align: center;
+  background-color: #60B5CC;
+
+  h1 {
+    text-transform: lowercase;
+    font-size: 5em;
+    color: white;
+  }
+
+  p {
+    font-size: 1.5em;
+    color: white;
+  }
+}
+
+.conference-image {
+  width: 262px;
+  height: 200px;
+}
+
+.upcoming-talks {
+  margin-top: 4em;
+  h2 {
+    text-align: center;
+    font-size: 2rem;
+  }
+}
+
+.talks {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 10px;
+
+  a {
+    color: $body-color;
+  }
+}
+
+.grow {
+  transition: all .2s ease-in-out;
+}
+.grow:hover {
+  transform: scale(1.10);
+  box-shadow: 10px 10px 16px -2px rgba(0,0,0,0.17);
+}
+
+.event-card {
+  background-color: #EEE;
+  width: 462px;
+  margin: 10px;
+
+  .location {
+    text-transform: uppercase;
+    font-size: 0.8em;
+    font-weight: bold;
+  }
+
+}
+
+.talk {
+
+  h3 {
+    margin-bottom: 0.3em;
+    line-height: 1.1em
+  }
+
+  h4 {
+    font-style: italic;
+    margin-bottom: 1em;
+  }
+
+  .talk-content {
+    padding: 20px;
+    padding-top: 26px;
+    padding-bottom: 2em;
+  }
+
+
+}
+
+a {
+  text-decoration: none;
+}
+
+.meetup-header {
+  height: 200px;
+  padding: 20px;
+  padding-bottom: 0px;
+  background-color: $elm-blue;
+  flex-direction: column;
+  justify-content: flex-end;
+  display: flex;
+
+  h3, h4 {
+    color: white;
+  }
+  h4 {
+    margin-bottom: 0.1em;
+
+  }
+}
+
+.meetup-footer {
+  padding: 20px;
+}
+
+
+.suggested-conferences {
+  margin-top: 5em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding-bottom: 200px;
+  table {
+    margin-top: 1em;
+  }
+}
+
+thead th, tbody th, tbody td {
+    padding: 1.5rem;
+}
+
+
+#melbjs-seb-porto-conf-image {
+  background-size: 305px;
+  background-position: -24px -25px;
+}
+
+#forward4-evan-cz-conf-image {
+  background-size: 470px;
+  background-position: -113px -15px;
+}
+
+#reactjs-jamison-dance-conf-image {
+  background-size: 305px;
+  background-position: -22px -8px;
+
+}
