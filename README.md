@@ -1,3 +1,12 @@
+# Elm Events
+View website at http://mbylstra.github.io/elm-events.
+
+## Contributors
+Submit a pull request or just file an issue if you'd like to add an event.
+
+This website uses https://github.com/pmdesgn/elm-webpack-starter.
+See below for instructions on how to use it:
+
 # elm-webpack-starter
 
 A simple Webpack setup for writing [Elm](http://elm-lang.org/) apps:
@@ -10,7 +19,7 @@ A simple Webpack setup for writing [Elm](http://elm-lang.org/) apps:
 
 ### Install:
 ```
-git clone git@github.com:pmdesgn/elm-webpack-starter.git
+git clone git@github.com:mbylstra/elm-events.git
 cd elm-webpack-starter
 npm install
 ```
