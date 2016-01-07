@@ -87,9 +87,10 @@ header {
 }
 
 .event-card {
-  background-color: #EEE;
+  // background-color: #EEE;
   width: 462px;
   margin: 10px;
+  border: 1px solid rgb(218, 218, 218);
 
   .location {
     text-transform: uppercase;
