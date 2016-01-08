@@ -88,6 +88,18 @@ upcomingEvents =
         --  ,
          }
     , ConferenceTalk
+         { conferenceName = "Bob Konferenz"
+         , slug = "bob-2016"
+         , conferenceLink = "http://bobkonf.de/2016/grosse-boelting.html"
+         , talkTitle = Just "Elm im produktiven Einsatz"
+         , speaker = "Gregor Große-Bölting"
+         , date = "19 February 2016"
+         , location = "Berlin, Germany"
+         , conferenceLogoFilename = "bob-conf.png"
+         , speakerPhotoFilename = "gregor.jpg"
+        --  ,
+         }
+    , ConferenceTalk
       { conferenceName = "React.js Conf"
       , slug = "reactjs-jamison-dance"
       , conferenceLink = "http://conf.reactjs.com/schedule.html#rethinking-all-practices-building-applications-in-elm"
