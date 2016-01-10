@@ -78,6 +78,14 @@ upcomingEvents =
          , logoUrl = Just "https://pbs.twimg.com/profile_images/644980018049748992/WUpRrRTI_400x400.png"
          }
     , Meetup
+         { meetupGroupName = "Elm User Group Dublin"
+         , meetupTitle = "Elm Meetup and Hackathon"
+         , meetupPageLink = "http://www.meetup.com/Elm-User-Group-Dublin/events/227979749/"
+         , date = "20 January 2016"
+         , location = "Dublin, Ireland"
+         , logoUrl = Just "http://photos4.meetupstatic.com/photos/event/7/a/1/3/global_444751251.jpeg"
+         }
+    , Meetup
          { meetupGroupName = "Chicago Elm"
          , meetupTitle = "First Meetup!"
          , meetupPageLink = "http://www.meetup.com/chicago-elm/events/226994513/"
