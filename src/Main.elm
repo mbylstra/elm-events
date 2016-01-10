@@ -31,6 +31,7 @@ type alias MeetupR =
     , location : String
     , date : String
     , meetupPageLink : String
+    , logoUrl : Maybe String
     }
 
 type alias SuggestedConferenceR =
@@ -74,6 +75,15 @@ upcomingEvents =
          , meetupPageLink = "http://www.google.com/url?q=http%3A%2F%2Fwww.eventbrite.com%2Fe%2Felm-seattle-hack-night-tickets-20526978746%3Faff%3Dutm_source%253Deb_email%2526utm_medium%253Demail%2526utm_campaign%253Dnew_event_email%26utm_term%3Deventurl_text&sa=D&sntz=1&usg=AFQjCNHYiILREiXD-cBD0-PnIY4bwyGIZQ"
          , date = "20 January 2016"
          , location = "Seattle, USA"
+         , logoUrl = Just "https://pbs.twimg.com/profile_images/644980018049748992/WUpRrRTI_400x400.png"
+         }
+    , Meetup
+         { meetupGroupName = "Chicago Elm"
+         , meetupTitle = "First Meetup!"
+         , meetupPageLink = "http://www.meetup.com/chicago-elm/events/226994513/"
+         , date = "2 February 2016"
+         , location = "Chicago, USA"
+         , logoUrl = Just "http://photos4.meetupstatic.com/photos/event/6/0/2/a/global_444504618.jpeg"
          }
     , ConferenceTalk
          { conferenceName = "Forward 4 Web Technology Summit"
@@ -124,7 +134,7 @@ suggestedConferences =
     ,
         { name = "LambdaConf"
         , date = "May 26-19, 2016"
-        , location = "Bolder, CO, USA"
+        , location = "Boulder, CO, USA"
         , submissionDeadline = "1 February, 2016"
         , link = "http://lambdaconf.us/"
         }
@@ -181,10 +191,20 @@ talkView record =
 
 meetupView : MeetupR -> Html
 meetupView record =
+
+  let
+    logoEl =
+      case record.logoUrl of
+        Just url ->
+          img [ src url ] []
+        Nothing -> span [] []
+
+  in
     a [ class "event-card meetup grow", href record.meetupPageLink]
           [ div [ class "meetup-header"]
             [ h3 []
                 [text record.meetupTitle]
+            , logoEl
             ]
           , div [ class "meetup-footer"]
             [ h4 []
