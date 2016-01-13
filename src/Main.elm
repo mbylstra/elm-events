@@ -70,6 +70,22 @@ upcomingEvents =
          , speakerPhotoFilename = "sebastian-porto.jpg"
          }
     , Meetup
+         { meetupGroupName = "Sydney Elixir Meetup"
+         , meetupTitle = "Intro to Elm by Igor Kaplov"
+         , meetupPageLink = "http://www.meetup.com/sydney-ex/events/227813634/"
+         , date = "13 January 2016"
+         , location = "Sydney, Australia"
+         , logoUrl = Nothing
+         }
+    , Meetup
+         { meetupGroupName = "Utah Elm Users"
+         , meetupTitle = "January Meetup"
+         , meetupPageLink = "http://www.meetup.com/Utah-Elm-Users/events/227368585/"
+         , date = "14 January 2016"
+         , location = "Seattle, USA"
+         , logoUrl = Nothing
+         }
+    , Meetup
          { meetupGroupName = "Elm Seattle"
          , meetupTitle = "Elm Seattle Hack Night"
          , meetupPageLink = "http://www.google.com/url?q=http%3A%2F%2Fwww.eventbrite.com%2Fe%2Felm-seattle-hack-night-tickets-20526978746%3Faff%3Dutm_source%253Deb_email%2526utm_medium%253Demail%2526utm_campaign%253Dnew_event_email%26utm_term%3Deventurl_text&sa=D&sntz=1&usg=AFQjCNHYiILREiXD-cBD0-PnIY4bwyGIZQ"
@@ -84,6 +100,30 @@ upcomingEvents =
          , date = "20 January 2016"
          , location = "Dublin, Ireland"
          , logoUrl = Just "http://photos4.meetupstatic.com/photos/event/7/a/1/3/global_444751251.jpeg"
+         }
+    , Meetup
+         { meetupGroupName = "Elm user group SF"
+         , meetupTitle = "Elm Hackathon"
+         , meetupPageLink = "http://www.meetup.com/Elm-user-group-SF/events/227613696/"
+         , date = "20 January 2016"
+         , location = "San Francisco, USA"
+         , logoUrl = Nothing
+         }
+    , Meetup
+         { meetupGroupName = "Elm Copenhagen"
+         , meetupTitle = "January Meetup"
+         , meetupPageLink = "http://www.meetup.com/Elm-Copenhagen/events/227807583/"
+         , date = "27 January 2016"
+         , location = "Copenhagen, Denmark"
+         , logoUrl = Nothing
+         }
+    , Meetup
+         { meetupGroupName = "STL Elm"
+         , meetupTitle = "Jessitron + Elm = <3"
+         , meetupPageLink = "http://www.meetup.com/STLElm/events/227852077/"
+         , date = "1 February 2016"
+         , location = "Saint Louis, MO, USA"
+         , logoUrl = Nothing
          }
     , Meetup
          { meetupGroupName = "Chicago Elm"
