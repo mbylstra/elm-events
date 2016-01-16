@@ -159,7 +159,7 @@ a {
 
 
 .suggested-conferences {
-  margin-top: 5em;
+  margin-top: 10em;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -172,6 +172,29 @@ a {
 
 thead th, tbody th, tbody td {
     padding: 1.5rem;
+}
+
+
+.new-meetup-groups {
+  margin-top: 10em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+
+  ul {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding: 0px;
+    margin: 0px;
+    li {
+      font-size:  1.9375rem;
+      list-style-type: none;
+      padding: 0px;
+      margin: 0px;
+    }
+  }
 }
 
 

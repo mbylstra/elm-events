@@ -25,7 +25,7 @@ type alias ConferenceTalkR =
     -- , company: Maybe String
     }
 
-type alias MeetupR =
+type alias MeetupEventR =
     { meetupGroupName : String
     , meetupTitle : String
     , location : String
@@ -33,6 +33,7 @@ type alias MeetupR =
     , meetupPageLink : String
     , logoUrl : Maybe String
     }
+
 
 type alias SuggestedConferenceR =
     { name : String
@@ -42,9 +43,14 @@ type alias SuggestedConferenceR =
     , location : String
     }
 
+type alias MeetupGroupR =
+    { name : String
+    , link : String
+    }
+
 type Event
     = ConferenceTalk ConferenceTalkR
-    | Meetup MeetupR
+    | Meetup MeetupEventR
 
 -- APP KICK OFF!
 main =
@@ -58,34 +64,37 @@ model = 0
 
 upcomingEvents : List Event
 upcomingEvents =
-    [ ConferenceTalk
-         { conferenceName = "Melb JS"
-         , slug = "melbjs-seb-porto"
-         , conferenceLink = "http://melbjs.com"
-         , talkTitle = Just "Elm"
-         , speaker = "Sebastian Porto"
-         , date = "13 January 2016"
-         , location = "Melbourne, Australia"
-         , conferenceLogoFilename = "melbjs.png"
-         , speakerPhotoFilename = "sebastian-porto.jpg"
-         }
-    , Meetup
-         { meetupGroupName = "Sydney Elixir Meetup"
-         , meetupTitle = "Intro to Elm by Igor Kaplov"
-         , meetupPageLink = "http://www.meetup.com/sydney-ex/events/227813634/"
-         , date = "13 January 2016"
-         , location = "Sydney, Australia"
-         , logoUrl = Nothing
-         }
-    , Meetup
-         { meetupGroupName = "Utah Elm Users"
-         , meetupTitle = "January Meetup"
-         , meetupPageLink = "http://www.meetup.com/Utah-Elm-Users/events/227368585/"
-         , date = "14 January 2016"
-         , location = "Seattle, USA"
-         , logoUrl = Nothing
-         }
-    , Meetup
+    [
+    -- Note: the following will show up in a future Past Events section.
+    -- This will actually use computer dates and some point too!
+    --[ ConferenceTalk
+    --      { conferenceName = "Melb JS"
+    --      , slug = "melbjs-seb-porto"
+    --      , conferenceLink = "http://melbjs.com"
+    --      , talkTitle = Just "Elm"
+    --      , speaker = "Sebastian Porto"
+    --      , date = "13 January 2016"
+    --      , location = "Melbourne, Australia"
+    --      , conferenceLogoFilename = "melbjs.png"
+    --      , speakerPhotoFilename = "sebastian-porto.jpg"
+    --      }
+    -- , Meetup
+    --      { meetupGroupName = "Sydney Elixir Meetup"
+    --      , meetupTitle = "Intro to Elm by Igor Kaplov"
+    --      , meetupPageLink = "http://www.meetup.com/sydney-ex/events/227813634/"
+    --      , date = "13 January 2016"
+    --      , location = "Sydney, Australia"
+    --      , logoUrl = Nothing
+    --      }
+    -- , Meetup
+    --      { meetupGroupName = "Utah Elm Users"
+    --      , meetupTitle = "January Meetup"
+    --      , meetupPageLink = "http://www.meetup.com/Utah-Elm-Users/events/227368585/"
+    --      , date = "14 January 2016"
+    --      , location = "Seattle, USA"
+    --      , logoUrl = Nothing
+    --      }
+      Meetup
          { meetupGroupName = "Elm Seattle"
          , meetupTitle = "Elm Seattle Hack Night"
          , meetupPageLink = "http://www.google.com/url?q=http%3A%2F%2Fwww.eventbrite.com%2Fe%2Felm-seattle-hack-night-tickets-20526978746%3Faff%3Dutm_source%253Deb_email%2526utm_medium%253Demail%2526utm_campaign%253Dnew_event_email%26utm_term%3Deventurl_text&sa=D&sntz=1&usg=AFQjCNHYiILREiXD-cBD0-PnIY4bwyGIZQ"
@@ -195,6 +204,22 @@ suggestedConferences =
         }
     ]
 
+newMeetupGroups : List MeetupGroupR
+newMeetupGroups =
+    [
+        { name = "Elm NYC"
+        , link = "http://www.meetup.com/Elm-NYC/"
+        }
+    ,   { name = "Elm Warsaw"
+        , link = "http://www.meetup.com/Elm-Warsaw/"
+        }
+    ,   { name = "Toky Elm Programming Meetup"
+        , link = "http://www.meetup.com/Tokyo-Elm-Programming-Meetup/"
+        }
+    ,   { name = "Vienna Elm Meetup"
+        , link = "http://www.meetup.com/Vienna-Elm-Meetup/"
+        }
+    ]
 
 confImage : String -> String -> Html
 confImage filename idValue =
@@ -237,7 +262,7 @@ talkView record =
           ]
         ]
 
-meetupView : MeetupR -> Html
+meetupView : MeetupEventR -> Html
 meetupView record =
 
   let
@@ -316,6 +341,21 @@ renderSuggestedConferences confs =
             ]
 
 
+renderNewMeetupGroup : MeetupGroupR -> Html
+renderNewMeetupGroup group =
+  li [] [ a [href group.link] [ text group.name ]]
+
+renderNewMeetupGroups : List MeetupGroupR -> Html
+renderNewMeetupGroups groups =
+    let
+        lis = List.map renderNewMeetupGroup groups
+    in
+        div [ class "new-meetup-groups"]
+            [ h2 [] [text "New Meetup Groups"]
+            , p [] [ text "These groups are in a formative stage and don't have any events planned yet." ]
+            , p [] [ text "If you live in these areas, or are passing by, make sure you join up to get notified about the first meetup!"]
+            , ul [] lis
+            ]
 
 -- mainView : Html
 mainView address model =
@@ -324,6 +364,7 @@ mainView address model =
             [ h1 [] [ text "Elm Events" ]
             ]
         , renderEvents upcomingEvents
+        , renderNewMeetupGroups newMeetupGroups
         , renderSuggestedConferences suggestedConferences
         ]
 -- VIEW
