@@ -94,55 +94,55 @@ upcomingEvents =
     --      , location = "Seattle, USA"
     --      , logoUrl = Nothing
     --      }
-      Meetup
-         { meetupGroupName = "Elm Seattle"
-         , meetupTitle = "Elm Seattle Hack Night"
-         , meetupPageLink = "http://www.google.com/url?q=http%3A%2F%2Fwww.eventbrite.com%2Fe%2Felm-seattle-hack-night-tickets-20526978746%3Faff%3Dutm_source%253Deb_email%2526utm_medium%253Demail%2526utm_campaign%253Dnew_event_email%26utm_term%3Deventurl_text&sa=D&sntz=1&usg=AFQjCNHYiILREiXD-cBD0-PnIY4bwyGIZQ"
-         , date = "20 January 2016"
-         , location = "Seattle, USA"
-         , logoUrl = Just "https://pbs.twimg.com/profile_images/644980018049748992/WUpRrRTI_400x400.png"
-         }
-    , Meetup
-         { meetupGroupName = "Elm User Group Dublin"
-         , meetupTitle = "Elm Meetup and Hackathon"
-         , meetupPageLink = "http://www.meetup.com/Elm-User-Group-Dublin/events/227979749/"
-         , date = "20 January 2016"
-         , location = "Dublin, Ireland"
-         , logoUrl = Just "http://photos4.meetupstatic.com/photos/event/7/a/1/3/global_444751251.jpeg"
-         }
-    , Meetup
-         { meetupGroupName = "Elm user group SF"
-         , meetupTitle = "Elm Hackathon"
-         , meetupPageLink = "http://www.meetup.com/Elm-user-group-SF/events/227613696/"
-         , date = "20 January 2016"
-         , location = "San Francisco, USA"
-         , logoUrl = Nothing
-         }
-    , Meetup
-         { meetupGroupName = "Elm Copenhagen"
-         , meetupTitle = "January Meetup"
-         , meetupPageLink = "http://www.meetup.com/Elm-Copenhagen/events/227807583/"
-         , date = "27 January 2016"
-         , location = "Copenhagen, Denmark"
-         , logoUrl = Nothing
-         }
-    , Meetup
-         { meetupGroupName = "STL Elm"
-         , meetupTitle = "Jessitron + Elm = <3"
-         , meetupPageLink = "http://www.meetup.com/STLElm/events/227852077/"
-         , date = "1 February 2016"
-         , location = "Saint Louis, MO, USA"
-         , logoUrl = Nothing
-         }
-    , Meetup
-         { meetupGroupName = "Chicago Elm"
-         , meetupTitle = "First Meetup!"
-         , meetupPageLink = "http://www.meetup.com/chicago-elm/events/226994513/"
-         , date = "2 February 2016"
-         , location = "Chicago, USA"
-         , logoUrl = Just "http://photos4.meetupstatic.com/photos/event/6/0/2/a/global_444504618.jpeg"
-         }
-    , ConferenceTalk
+    --   Meetup
+    --      { meetupGroupName = "Elm Seattle"
+    --      , meetupTitle = "Elm Seattle Hack Night"
+    --      , meetupPageLink = "http://www.google.com/url?q=http%3A%2F%2Fwww.eventbrite.com%2Fe%2Felm-seattle-hack-night-tickets-20526978746%3Faff%3Dutm_source%253Deb_email%2526utm_medium%253Demail%2526utm_campaign%253Dnew_event_email%26utm_term%3Deventurl_text&sa=D&sntz=1&usg=AFQjCNHYiILREiXD-cBD0-PnIY4bwyGIZQ"
+    --      , date = "20 January 2016"
+    --      , location = "Seattle, USA"
+    --      , logoUrl = Just "https://pbs.twimg.com/profile_images/644980018049748992/WUpRrRTI_400x400.png"
+    --      }
+    -- , Meetup
+    --      { meetupGroupName = "Elm User Group Dublin"
+    --      , meetupTitle = "Elm Meetup and Hackathon"
+    --      , meetupPageLink = "http://www.meetup.com/Elm-User-Group-Dublin/events/227979749/"
+    --      , date = "20 January 2016"
+    --      , location = "Dublin, Ireland"
+    --      , logoUrl = Just "http://photos4.meetupstatic.com/photos/event/7/a/1/3/global_444751251.jpeg"
+    --      }
+    -- , Meetup
+    --      { meetupGroupName = "Elm user group SF"
+    --      , meetupTitle = "Elm Hackathon"
+    --      , meetupPageLink = "http://www.meetup.com/Elm-user-group-SF/events/227613696/"
+    --      , date = "20 January 2016"
+    --      , location = "San Francisco, USA"
+    --      , logoUrl = Nothing
+    --      }
+    -- , Meetup
+    --      { meetupGroupName = "Elm Copenhagen"
+    --      , meetupTitle = "January Meetup"
+    --      , meetupPageLink = "http://www.meetup.com/Elm-Copenhagen/events/227807583/"
+    --      , date = "27 January 2016"
+    --      , location = "Copenhagen, Denmark"
+    --      , logoUrl = Nothing
+    --      }
+    -- , Meetup
+    --      { meetupGroupName = "STL Elm"
+    --      , meetupTitle = "Jessitron + Elm = <3"
+    --      , meetupPageLink = "http://www.meetup.com/STLElm/events/227852077/"
+    --      , date = "1 February 2016"
+    --      , location = "Saint Louis, MO, USA"
+    --      , logoUrl = Nothing
+    --      }
+    -- , Meetup
+    --      { meetupGroupName = "Chicago Elm"
+    --      , meetupTitle = "First Meetup!"
+    --      , meetupPageLink = "http://www.meetup.com/chicago-elm/events/226994513/"
+    --      , date = "2 February 2016"
+    --      , location = "Chicago, USA"
+    --      , logoUrl = Just "http://photos4.meetupstatic.com/photos/event/6/0/2/a/global_444504618.jpeg"
+    --      }
+      ConferenceTalk
          { conferenceName = "Forward 4 Web Technology Summit"
          , slug = "forward4-evan-cz"
          , conferenceLink = "http://forwardjs.com/summit"
@@ -154,6 +154,22 @@ upcomingEvents =
          , speakerPhotoFilename = "evan-czaplicki.jpg"
         --  ,
          }
+    , Meetup
+      { meetupGroupName = "Elm London Meetup"
+      , meetupTitle = "Elm London Meetup - First Set of Talks"
+      , meetupPageLink = "http://www.meetup.com/Elm-London-Meetup/events/228549749/"
+      , date = " 10 February 2016"
+      , location = "London, UK"
+      , logoUrl = Nothing
+      }
+    , Meetup
+      { meetupGroupName = "Stockholm Elm"
+      , meetupTitle = "Initial Meetup - Sprouting Season!"
+      , meetupPageLink = "http://www.meetup.com/Stockholm-Elm/events/228463568/"
+      , date = "17 February 2016"
+      , location = "Stockholm, Sweden"
+      , logoUrl = Nothing
+      }
     , ConferenceTalk
          { conferenceName = "Bob Konferenz"
          , slug = "bob-2016"
@@ -177,6 +193,33 @@ upcomingEvents =
       , conferenceLogoFilename = "reactjs-conf.png"
       , speakerPhotoFilename = "jamison-dance.jpg"
       }
+    , Meetup
+      { meetupGroupName = "Tokyo Elm Programming Meetup"
+      , meetupTitle = "ELM Meetup（日本初？）"
+      , meetupPageLink = "http://www.meetup.com/Tokyo-Elm-Programming-Meetup/events/228097244/"
+      , date = "24 February 2016"
+      , location = "Ebisu, Tokyo, Japan"
+      , logoUrl = Nothing
+      }
+    , ConferenceTalk
+      { conferenceName = "Erlang Factory"
+      , slug = "erlang-factory-evan-cz"
+      , conferenceLink = "http://www.erlang-factory.com/"
+      , talkTitle = Just "Keynote"
+      , speaker = "Evan Czaplicki"
+      , date = "10-11 March 2016"
+      , location = "San Franciso Bay Area, USA"
+      , conferenceLogoFilename = "erlang-factory.png"
+      , speakerPhotoFilename = "evan-czaplicki.jpg"
+      }
+    , Meetup
+      { meetupGroupName = "Elm NYC"
+      , meetupTitle = "Elm NYC's First Meetup!"
+      , meetupPageLink = "http://www.meetup.com/Elm-NYC/events/228564943/"
+      , date = "1 March 2016"
+      , location = "New York, USA"
+      , logoUrl = Nothing
+      }
     ]
 
 suggestedConferences : List SuggestedConferenceR
@@ -185,14 +228,14 @@ suggestedConferences =
         { name = "ReactEurope"
         , date = "June 2-3, 2016"
         , location = "Paris, France"
-        , submissionDeadline = "25 January, 2016"
+        , submissionDeadline = "PAST"
         , link = "https://www.react-europe.org/"
         }
     ,
         { name = "LambdaConf"
         , date = "May 26-19, 2016"
         , location = "Boulder, CO, USA"
-        , submissionDeadline = "1 February, 2016"
+        , submissionDeadline = "PAST"
         , link = "http://lambdaconf.us/"
         }
     ,
@@ -207,17 +250,14 @@ suggestedConferences =
 newMeetupGroups : List MeetupGroupR
 newMeetupGroups =
     [
-        { name = "Elm NYC"
-        , link = "http://www.meetup.com/Elm-NYC/"
-        }
-    ,   { name = "Elm Warsaw"
+        { name = "Elm Warsaw"
         , link = "http://www.meetup.com/Elm-Warsaw/"
-        }
-    ,   { name = "Toky Elm Programming Meetup"
-        , link = "http://www.meetup.com/Tokyo-Elm-Programming-Meetup/"
         }
     ,   { name = "Vienna Elm Meetup"
         , link = "http://www.meetup.com/Vienna-Elm-Meetup/"
+        }
+    ,   { name = "Boston Elmlang Meetup"
+        , link = "http://www.meetup.com/Boston-Elm-Lang-Meetup/"
         }
     ]
 
