@@ -220,6 +220,14 @@ upcomingEvents =
       , location = "New York, USA"
       , logoUrl = Nothing
       }
+    , Meetup
+      { meetupGroupName = "Elm Paris Meetup"
+      , meetupTitle = "Elm Paris #1"
+      , meetupPageLink = "http://www.meetup.com/fr-FR/Meetup-Elm-Paris/events/228722002/"
+      , date = "23 March 2016"
+      , location = "Paris, France"
+      , logoUrl = Nothing
+      }
     ]
 
 suggestedConferences : List SuggestedConferenceR
