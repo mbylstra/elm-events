@@ -142,66 +142,74 @@ upcomingEvents =
     --      , location = "Chicago, USA"
     --      , logoUrl = Just "http://photos4.meetupstatic.com/photos/event/6/0/2/a/global_444504618.jpeg"
     --      }
+      -- ConferenceTalk
+      --    { conferenceName = "Forward 4 Web Technology Summit"
+      --    , slug = "forward4-evan-cz"
+      --    , conferenceLink = "http://forwardjs.com/summit"
+      --    , talkTitle = Nothing
+      --    , speaker = "Evan Czaplicki"
+      --    , date = "10 February 2016"
+      --    , location = "San Franciso, USA"
+      --    , conferenceLogoFilename = "forward4.png"
+      --    , speakerPhotoFilename = "evan-czaplicki.jpg"
+      --   --  ,
+      --    }
+    -- , Meetup
+    --   { meetupGroupName = "Elm London Meetup"
+    --   , meetupTitle = "Elm London Meetup - First Set of Talks"
+    --   , meetupPageLink = "http://www.meetup.com/Elm-London-Meetup/events/228549749/"
+    --   , date = " 10 February 2016"
+    --   , location = "London, UK"
+    --   , logoUrl = Nothing
+    --   }
+    -- , Meetup
+    --   { meetupGroupName = "Stockholm Elm"
+    --   , meetupTitle = "Initial Meetup - Sprouting Season!"
+    --   , meetupPageLink = "http://www.meetup.com/Stockholm-Elm/events/228463568/"
+    --   , date = "17 February 2016"
+    --   , location = "Stockholm, Sweden"
+    --   , logoUrl = Nothing
+    --   }
+    -- , ConferenceTalk
+    --      { conferenceName = "Bob Konferenz"
+    --      , slug = "bob-2016"
+    --      , conferenceLink = "http://bobkonf.de/2016/grosse-boelting.html"
+    --      , talkTitle = Just "Elm im produktiven Einsatz"
+    --      , speaker = "Gregor Große-Bölting"
+    --      , date = "19 February 2016"
+    --      , location = "Berlin, Germany"
+    --      , conferenceLogoFilename = "bob-conf.png"
+    --      , speakerPhotoFilename = "gregor.jpg"
+    --     --  ,
+    --      }
+    -- , ConferenceTalk
+    --   { conferenceName = "React.js Conf"
+    --   , slug = "reactjs-jamison-dance"
+    --   , conferenceLink = "http://conf.reactjs.com/schedule.html#rethinking-all-practices-building-applications-in-elm"
+    --   , talkTitle = Just "Rethinking All Practices: Building Applications in Elm"
+    --   , speaker = "Jamison Dance"
+    --   , date = "23 February 2016"
+    --   , location = "San Franciso, USA"
+    --   , conferenceLogoFilename = "reactjs-conf.png"
+    --   , speakerPhotoFilename = "jamison-dance.jpg"
+    --   }
+    -- , Meetup
+    --   { meetupGroupName = "Tokyo Elm Programming Meetup"
+    --   , meetupTitle = "ELM Meetup（日本初？）"
+    --   , meetupPageLink = "http://www.meetup.com/Tokyo-Elm-Programming-Meetup/events/228097244/"
+    --   , date = "24 February 2016"
+    --   , location = "Ebisu, Tokyo, Japan"
+    --   , logoUrl = Nothing
+    --   }
+      -- Meetup
+      -- { meetupGroupName = "Elm NYC"
+      -- , meetupTitle = "Elm NYC's First Meetup!"
+      -- , meetupPageLink = "http://www.meetup.com/Elm-NYC/events/228564943/"
+      -- , date = "1 March 2016"
+      -- , location = "New York, USA"
+      -- , logoUrl = Nothing
+      -- }
       ConferenceTalk
-         { conferenceName = "Forward 4 Web Technology Summit"
-         , slug = "forward4-evan-cz"
-         , conferenceLink = "http://forwardjs.com/summit"
-         , talkTitle = Nothing
-         , speaker = "Evan Czaplicki"
-         , date = "10 February 2016"
-         , location = "San Franciso, USA"
-         , conferenceLogoFilename = "forward4.png"
-         , speakerPhotoFilename = "evan-czaplicki.jpg"
-        --  ,
-         }
-    , Meetup
-      { meetupGroupName = "Elm London Meetup"
-      , meetupTitle = "Elm London Meetup - First Set of Talks"
-      , meetupPageLink = "http://www.meetup.com/Elm-London-Meetup/events/228549749/"
-      , date = " 10 February 2016"
-      , location = "London, UK"
-      , logoUrl = Nothing
-      }
-    , Meetup
-      { meetupGroupName = "Stockholm Elm"
-      , meetupTitle = "Initial Meetup - Sprouting Season!"
-      , meetupPageLink = "http://www.meetup.com/Stockholm-Elm/events/228463568/"
-      , date = "17 February 2016"
-      , location = "Stockholm, Sweden"
-      , logoUrl = Nothing
-      }
-    , ConferenceTalk
-         { conferenceName = "Bob Konferenz"
-         , slug = "bob-2016"
-         , conferenceLink = "http://bobkonf.de/2016/grosse-boelting.html"
-         , talkTitle = Just "Elm im produktiven Einsatz"
-         , speaker = "Gregor Große-Bölting"
-         , date = "19 February 2016"
-         , location = "Berlin, Germany"
-         , conferenceLogoFilename = "bob-conf.png"
-         , speakerPhotoFilename = "gregor.jpg"
-        --  ,
-         }
-    , ConferenceTalk
-      { conferenceName = "React.js Conf"
-      , slug = "reactjs-jamison-dance"
-      , conferenceLink = "http://conf.reactjs.com/schedule.html#rethinking-all-practices-building-applications-in-elm"
-      , talkTitle = Just "Rethinking All Practices: Building Applications in Elm"
-      , speaker = "Jamison Dance"
-      , date = "23 February 2016"
-      , location = "San Franciso, USA"
-      , conferenceLogoFilename = "reactjs-conf.png"
-      , speakerPhotoFilename = "jamison-dance.jpg"
-      }
-    , Meetup
-      { meetupGroupName = "Tokyo Elm Programming Meetup"
-      , meetupTitle = "ELM Meetup（日本初？）"
-      , meetupPageLink = "http://www.meetup.com/Tokyo-Elm-Programming-Meetup/events/228097244/"
-      , date = "24 February 2016"
-      , location = "Ebisu, Tokyo, Japan"
-      , logoUrl = Nothing
-      }
-    , ConferenceTalk
       { conferenceName = "Erlang Factory"
       , slug = "erlang-factory-evan-cz"
       , conferenceLink = "http://www.erlang-factory.com/"
@@ -213,20 +221,23 @@ upcomingEvents =
       , speakerPhotoFilename = "evan-czaplicki.jpg"
       }
     , Meetup
-      { meetupGroupName = "Elm NYC"
-      , meetupTitle = "Elm NYC's First Meetup!"
-      , meetupPageLink = "http://www.meetup.com/Elm-NYC/events/228564943/"
-      , date = "1 March 2016"
-      , location = "New York, USA"
-      , logoUrl = Nothing
-      }
-    , Meetup
       { meetupGroupName = "Elm Paris Meetup"
       , meetupTitle = "Elm Paris #1"
       , meetupPageLink = "http://www.meetup.com/fr-FR/Meetup-Elm-Paris/events/228722002/"
       , date = "23 March 2016"
       , location = "Paris, France"
       , logoUrl = Nothing
+      }
+    , ConferenceTalk
+      { conferenceName = "ProgSCon"
+      , slug = "progscon-2016"
+      , conferenceLink = "http://progscon.co.uk/"
+      , talkTitle = Just "Elm: Finding the Functional in Reactive Programming"
+      , speaker = "Claudia Doppioslash"
+      , date = "22 April 2016"
+      , location = "London"
+      , conferenceLogoFilename = "progscon.png"
+      , speakerPhotoFilename = "claudia-doppioslash.jpg"
       }
     ]
 
