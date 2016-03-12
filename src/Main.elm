@@ -209,18 +209,18 @@ upcomingEvents =
       -- , location = "New York, USA"
       -- , logoUrl = Nothing
       -- }
-      ConferenceTalk
-      { conferenceName = "Erlang Factory"
-      , slug = "erlang-factory-evan-cz"
-      , conferenceLink = "http://www.erlang-factory.com/"
-      , talkTitle = Just "Keynote"
-      , speaker = "Evan Czaplicki"
-      , date = "10-11 March 2016"
-      , location = "San Franciso Bay Area, USA"
-      , conferenceLogoFilename = "erlang-factory.png"
-      , speakerPhotoFilename = "evan-czaplicki.jpg"
-      }
-    , Meetup
+      -- ConferenceTalk
+      -- { conferenceName = "Erlang Factory"
+      -- , slug = "erlang-factory-evan-cz"
+      -- , conferenceLink = "http://www.erlang-factory.com/"
+      -- , talkTitle = Just "Keynote"
+      -- , speaker = "Evan Czaplicki"
+      -- , date = "10-11 March 2016"
+      -- , location = "San Franciso Bay Area, USA"
+      -- , conferenceLogoFilename = "erlang-factory.png"
+      -- , speakerPhotoFilename = "evan-czaplicki.jpg"
+      -- }
+      Meetup
       { meetupGroupName = "Chicago Elm"
       , meetupTitle = "Presentations by Yonatan Kogan, Jacob Matthews, and Brian Hicks"
       , meetupPageLink = "http://www.meetup.com/chicago-elm/events/229234216/"
