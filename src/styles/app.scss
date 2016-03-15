@@ -128,6 +128,7 @@ a {
 .meetup-header {
   height: 200px;
   padding: 20px;
+
   padding-bottom: 0px;
   background-color: $elm-blue;
   flex-direction: column;
@@ -141,11 +142,13 @@ a {
     height: 100px;
     position: absolute;
     border: 1px solid white;
-
   }
 
   h3, h4 {
     color: white;
+  }
+  h3 {
+    padding-right: 100px;
   }
   h4 {
     margin-bottom: 0.1em;
