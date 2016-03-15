@@ -240,12 +240,12 @@ upcomingEvents =
       { conferenceName = "Flourish! 2016"
       , slug = "flourish-2016"
       , conferenceLink = "http://flourishconf.com/2016/speakers.php?id=11"
-      , talkTitle = "Friendly Functional Programming For The Web"
+      , talkTitle = Just "Friendly Functional Programming For The Web"
       , speaker = "Luke Westby"
       , date = "2 April 2016"
       , location = "Chicago, IL, USA"
-      , conferenceLogoFilename = "http://www.flourishconf.com/2016/images/f16-logo-wtagline-black.png"
-      , speakerPhotoFilename = "http://www.flourishconf.com/2016/images/speakers/luke-westby.jpg"
+      , conferenceLogoFilename = "flourish-2016.png"
+      , speakerPhotoFilename = "luke-westby.jpg"
       }
     , ConferenceTalk
       { conferenceName = "ProgSCon"
