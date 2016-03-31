@@ -239,7 +239,7 @@ upcomingEvents =
     , ConferenceTalk
       { conferenceName = "Flourish! 2016"
       , slug = "flourish-2016"
-      , conferenceLink = "http://flourishconf.com/2016/speakers.php?id=11"
+      , conferenceLink = "http://flourishconf.com/2016/speakers.php?id=12"
       , talkTitle = Just "Friendly Functional Programming For The Web"
       , speaker = "Luke Westby"
       , date = "2 April 2016"
