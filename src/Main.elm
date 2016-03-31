@@ -220,23 +220,23 @@ upcomingEvents =
       -- , conferenceLogoFilename = "erlang-factory.png"
       -- , speakerPhotoFilename = "evan-czaplicki.jpg"
       -- }
-      Meetup
-      { meetupGroupName = "Chicago Elm"
-      , meetupTitle = "Presentations by Yonatan Kogan, Jacob Matthews, and Brian Hicks"
-      , meetupPageLink = "http://www.meetup.com/chicago-elm/events/229234216/"
-      , date = "16 March 2016"
-      , location = "Chicago, IL, USA"
-      , logoUrl = Just "http://photos3.meetupstatic.com/photos/event/6/0/2/a/highres_444504618.jpeg"
-      }
-    , Meetup
-      { meetupGroupName = "Elm Paris Meetup"
-      , meetupTitle = "Elm Paris #1"
-      , meetupPageLink = "http://www.meetup.com/fr-FR/Meetup-Elm-Paris/events/228722002/"
-      , date = "23 March 2016"
-      , location = "Paris, France"
-      , logoUrl = Nothing
-      }
-    , ConferenceTalk
+    --   Meetup
+    --   { meetupGroupName = "Chicago Elm"
+    --   , meetupTitle = "Presentations by Yonatan Kogan, Jacob Matthews, and Brian Hicks"
+    --   , meetupPageLink = "http://www.meetup.com/chicago-elm/events/229234216/"
+    --   , date = "16 March 2016"
+    --   , location = "Chicago, IL, USA"
+    --   , logoUrl = Just "http://photos3.meetupstatic.com/photos/event/6/0/2/a/highres_444504618.jpeg"
+    --   }
+    -- , Meetup
+    --   { meetupGroupName = "Elm Paris Meetup"
+    --   , meetupTitle = "Elm Paris #1"
+    --   , meetupPageLink = "http://www.meetup.com/fr-FR/Meetup-Elm-Paris/events/228722002/"
+    --   , date = "23 March 2016"
+    --   , location = "Paris, France"
+    --   , logoUrl = Nothing
+    --   }
+      ConferenceTalk
       { conferenceName = "Flourish! 2016"
       , slug = "flourish-2016"
       , conferenceLink = "http://flourishconf.com/2016/speakers.php?id=12"
