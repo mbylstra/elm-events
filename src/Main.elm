@@ -288,7 +288,10 @@ suggestedConferences =
 newMeetupGroups : List MeetupGroupR
 newMeetupGroups =
     [
-        { name = "Elm Warsaw"
+        { name = "Elmoin Hamburg / Schleswig Holstein"
+        , link = "http://www.meetup.com/Elmoin/"
+        }
+    ,    { name = "Elm Warsaw"
         , link = "http://www.meetup.com/Elm-Warsaw/"
         }
     ,   { name = "Vienna Elm Meetup"
