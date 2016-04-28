@@ -236,18 +236,18 @@ upcomingEvents =
     --   , location = "Paris, France"
     --   , logoUrl = Nothing
     --   }
-      ConferenceTalk
-      { conferenceName = "Flourish! 2016"
-      , slug = "flourish-2016"
-      , conferenceLink = "http://flourishconf.com/2016/speakers.php?id=12"
-      , talkTitle = Just "Friendly Functional Programming For The Web"
-      , speaker = "Luke Westby"
-      , date = "2 April 2016"
-      , location = "Chicago, IL, USA"
-      , conferenceLogoFilename = "flourish-2016.png"
-      , speakerPhotoFilename = "luke-westby.jpg"
-      }
-    , ConferenceTalk
+    -- ConferenceTalk
+    -- { conferenceName = "Flourish! 2016"
+    -- , slug = "flourish-2016"
+    -- , conferenceLink = "http://flourishconf.com/2016/speakers.php?id=12"
+    -- , talkTitle = Just "Friendly Functional Programming For The Web"
+    -- , speaker = "Luke Westby"
+    -- , date = "2 April 2016"
+    -- , location = "Chicago, IL, USA"
+    -- , conferenceLogoFilename = "flourish-2016.png"
+    -- , speakerPhotoFilename = "luke-westby.jpg"
+    -- }
+    ConferenceTalk
       { conferenceName = "ProgSCon"
       , slug = "progscon-2016"
       , conferenceLink = "http://progscon.co.uk/"
@@ -257,6 +257,14 @@ upcomingEvents =
       , location = "London"
       , conferenceLogoFilename = "progscon.png"
       , speakerPhotoFilename = "claudia-doppioslash.jpg"
+      }
+    , Meetup
+      { meetupGroupName = "Elmoin"
+      , meetupTitle = "First Elmoin Meetup"
+      , meetupPageLink = "http://www.meetup.com/de-DE/Elmoin/events/230416727/"
+      , date = "03 May 2016"
+      , location = "Hamburg, Germany"
+      , logoUrl = Just "https://cdn.rawgit.com/sectore/elmoin-logo-media/master/elmoin-logo.svg"
       }
     ]
 
@@ -288,7 +296,10 @@ suggestedConferences =
 newMeetupGroups : List MeetupGroupR
 newMeetupGroups =
     [
-        { name = "Elm Warsaw"
+        { name = "Elmoin Hamburg / Schleswig Holstein"
+        , link = "http://www.meetup.com/Elmoin/"
+        }
+    ,    { name = "Elm Warsaw"
         , link = "http://www.meetup.com/Elm-Warsaw/"
         }
     ,   { name = "Vienna Elm Meetup"
