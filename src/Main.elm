@@ -232,7 +232,7 @@ renderEvents events =
         eventViews = List.map renderEvent events
     in
         div [ class "upcoming-talks"]
-            [ h2 [] [ text "Upcoming Conference Talks and Meetups" ]
+            [ h2 [] [ text "Upcoming Conference Talks" ]
             , div [ class "talks"]
                 eventViews
             ]
