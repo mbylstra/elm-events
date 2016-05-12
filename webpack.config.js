@@ -1,28 +1,21 @@
+var path              = require( 'path' );
 var webpack           = require( 'webpack' );
 var merge             = require( 'webpack-merge' );
+var HtmlWebpackPlugin = require( 'html-webpack-plugin' );
+var autoprefixer      = require( 'autoprefixer' );
 var ExtractTextPlugin = require( 'extract-text-webpack-plugin' );
-var swig              = require( 'swig' );        // templating lib for generating index.html 
-var writefile         = require( 'writefile' );   // safer Node file writer (creates folders if not existing)
 
 console.log( 'WEBPACK GO!');
 
 // detemine build env
-var TARGET_ENV = process.env.npm_lifecycle_event === 'build' ? 'prod' : 'dev';
-
-// generate HTML for index page (based on desired env)
-var indexTemplate = swig.compileFile('./src/index.html');
-var indexHtml     = indexTemplate( { env: TARGET_ENV } );
-
-// write out index.html to dist/
-writefile( './dist/index.html', indexHtml );
+var TARGET_ENV = process.env.npm_lifecycle_event === 'build' ? 'production' : 'development';
 
 // common webpack config
 var commonConfig = {
-  entry: './src/index.js',
 
   output: {
-    path:     './dist',
-    filename: 'bundle.js'
+    path:       path.resolve( __dirname, 'dist/' ),
+    filename: '[hash].js',
   },
 
   resolve: {
@@ -31,62 +24,79 @@ var commonConfig = {
   },
 
   module: {
-    loaders: [
-      {
-        test:    /\.html$/,
-        exclude: /node_modules/,
-        loader:  'file?name=[name].[ext]'
-      },
-      {
-        test:    /\.elm$/,
-        exclude: [/elm-stuff/, /node_modules/],
-        loader:  'elm-webpack'
-      }
-    ],
-
     noParse: /\.elm$/
-  }
+  },
+
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: 'src/index.html',
+      inject:   'body',
+      filename: 'index.html'
+    })
+  ],
+
+  postcss: [ autoprefixer( { browsers: ['last 2 versions'] } ) ],
+
 }
 
 // additional webpack settings for local env (when invoked by 'npm start')
-if ( TARGET_ENV === 'dev' ) {
+if ( TARGET_ENV === 'development' ) {
   console.log( 'Serving locally...');
 
   module.exports = merge( commonConfig, {
 
+    entry: [
+      'webpack-dev-server/client?http://localhost:8080',
+      path.join( __dirname, 'src/index.js' )
+    ],
+
     devServer: {
-      inline: true,
-      stats: 'errors-only'
+      inline:   true,
+      progress: true
     },
 
     module: {
       loaders: [
         {
+          test:    /\.elm$/,
+          exclude: [/elm-stuff/, /node_modules/],
+          loader:  'elm-webpack'
+        },
+        {
           test: /\.(css|scss)$/,
           loaders: [
             'style-loader',
             'css-loader',
-            'autoprefixer-loader?browsers=last 2 versions',
+            'postcss-loader',
             'sass-loader'
           ]
         }
       ]
     }
+
   });
 }
 
 // additional webpack settings for prod env (when invoked via 'npm run build')
-if ( TARGET_ENV === 'prod' ) {
+if ( TARGET_ENV === 'production' ) {
   console.log( 'Building for prod...');
 
   module.exports = merge( commonConfig, {
+
+    entry: path.join( __dirname, 'src/index.js' ),
+
     module: {
       loaders: [
+        {
+          test:    /\.elm$/,
+          exclude: [/elm-stuff/, /node_modules/],
+          loader:  'elm-webpack'
+        },
         {
           test: /\.(css|scss)$/,
           loader: ExtractTextPlugin.extract( 'style-loader', [
             'css-loader',
-            'autoprefixer-loader?browsers=last 2 versions',
+            'postcss-loader',
             'sass-loader'
           ])
         }
@@ -94,14 +104,16 @@ if ( TARGET_ENV === 'prod' ) {
     },
 
     plugins: [
+      new webpack.optimize.OccurenceOrderPlugin(),
+
       // extract CSS into a separate file
-      new ExtractTextPlugin( './css/stylesheet.css', { allChunks: true } ),
+      new ExtractTextPlugin( './[hash].css', { allChunks: true } ),
 
       // minify & mangle JS/CSS
       new webpack.optimize.UglifyJsPlugin({
           minimize:   true,
-          compressor: { warnings: false },
-          mangle:     true                      // TODO: need any exceptions?
+          compressor: { warnings: false }
+          // mangle:  true
       })
     ]
 
