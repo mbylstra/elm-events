@@ -2,6 +2,10 @@ import Html exposing (..)
 import Html.App exposing (..)
 import Html.Attributes exposing (..)
 import Maybe exposing (withDefault)
+import Date exposing (Date)
+import Task
+import Date.Extra.Compare exposing (Compare2 (SameOrAfter), is)
+import Result exposing (Result)
 
 
 type alias ConferenceTalkR =
@@ -17,14 +21,14 @@ type alias ConferenceTalkR =
     -- , company: Maybe String
     }
 
-type alias MeetupEventR =
-    { meetupGroupName : String
-    , meetupTitle : String
-    , location : String
-    , date : String
-    , meetupPageLink : String
-    , logoUrl : Maybe String
-    }
+-- type alias MeetupEventR =
+--     { meetupGroupName : String
+--     , meetupTitle : String
+--     , location : String
+--     , date : String
+--     , meetupPageLink : String
+--     , logoUrl : Maybe String
+--     }
 
 
 type alias SuggestedConferenceR =
@@ -42,21 +46,53 @@ type alias MeetupGroupR =
 
 type Event
     = ConferenceTalk ConferenceTalkR
-    | Meetup MeetupEventR
+    -- | Meetup MeetupEventR
+
+
+getCurrentDateCmd : Cmd Msg
+getCurrentDateCmd = Task.perform (\_ -> NoOp) TodayDateFetched Date.now
+
 
 main =
-  Html.App.beginnerProgram
-    { model = model
+  Html.App.program
+    { init = init
     , view = mainView
     , update = update
+    , subscriptions = (\_ -> Sub.none)
     }
 
 
 -- MODEL
-model = ()
 
+
+type alias Model = { dateToday : Maybe Date }
+
+model : Model
+model = { dateToday = Nothing }
+
+init = model ! [getCurrentDateCmd]
+
+
+
+-- ype Msg = TheDate Date | NoOp
+--
+-- myCmd : Cmd Msg
+-- myCmd = Task.perform (\_ -> NoOp) TheDate Date.now
+
+
+type Msg
+  = NoOp
+  | TodayDateFetched Date
+
+
+update : Msg -> Model -> (Model, Cmd Msg)
 update msg model =
-  model
+  case (Debug.log "msg" msg) of
+    TodayDateFetched date ->
+      { model | dateToday = Just date } ! []
+    NoOp ->
+      model ! []
+
 
 
 
@@ -83,20 +119,31 @@ upcomingEvents =
         , talkTitle = Just "Adventures in Elm"
         , speaker = "Jessica Kerr"
         , date = "24 May 2016"
-        , location = "Chicago"
+        , location = "Chicago, USA"
         , conferenceLogoFilename = "goto-conference.jpg"
         , speakerPhotoFilename = "jessica-kerr.jpg"
         }
-    , ConferenceTalk
+   , ConferenceTalk
         { conferenceName = "At The Frontend"
         , slug = "at-the-frontend-2016"
         , conferenceLink = "http://atthefrontend.dk/"
         , talkTitle = Just "Stepping out of the chaos with Elm"
         , speaker = "José Lorenzo Rodríguez"
         , date = "25 May 2016"
-        , location = "Copenhagen"
+        , location = "Copenhagen, Denmark"
         , conferenceLogoFilename = "at-the-frontend-2016.png"
         , speakerPhotoFilename = "jose.jpg"
+    }
+    , ConferenceTalk
+        { conferenceName = "Curry On Rome!"
+        , slug = "curry-on-rome-2016"
+        , conferenceLink = "http://www.curry-on.org/2016/sessions/creating-a-fun-game-with-elm.html"
+        , talkTitle = Just "Creating a Fun Game with Elm"
+        , speaker = "Andrey Kuzmin & Kolja Wilcke"
+        , date = "18 July 2016"
+        , location = "Rome, Italy"
+        , conferenceLogoFilename = "curry-on-rome-2016.png"
+        , speakerPhotoFilename = "curry-on-rome-2016-people.png"
         }
     -- , Meetup
     --     { meetupGroupName = "Elmoin"
@@ -153,7 +200,7 @@ newMeetupGroups =
     --     }
     ]
 
-confImage : String -> String -> Html ()
+confImage : String -> String -> Html Msg
 confImage filename idValue =
     div
         [ id idValue
@@ -163,7 +210,7 @@ confImage filename idValue =
         ]
         []
 
-speakerImage : String -> Html ()
+speakerImage : String -> Html Msg
 speakerImage filename =
     img
         [ src ("img/" ++ filename)
@@ -175,9 +222,9 @@ speakerImage filename =
         ]
         []
 
-talkView : ConferenceTalkR -> Html ()
+talkView : ConferenceTalkR -> Html Msg
 talkView record =
-    a [ class "event-card talk grow", href record.conferenceLink]
+    a [ class ("event-card talk grow " ++ record.slug), href record.conferenceLink]
         [ div
             [ style [("display", "flex")]
             ]
@@ -193,40 +240,40 @@ talkView record =
           ]
         ]
 
-meetupView : MeetupEventR -> Html ()
-meetupView record =
+-- meetupView : MeetupEventR -> Html Msg
+-- meetupView record =
+--
+--   let
+--     logoEl =
+--       case record.logoUrl of
+--         Just url ->
+--           img [ src url ] []
+--         Nothing -> span [] []
+--
+--   in
+--     a [ class "event-card meetup grow", href record.meetupPageLink]
+--           [ div [ class "meetup-header"]
+--             [ h3 []
+--                 [text record.meetupTitle]
+--             , logoEl
+--             ]
+--           , div [ class "meetup-footer"]
+--             [ h4 []
+--                 [text record.meetupGroupName]
+--             , div [] [text record.date]
+--             , div [ class "location"] [text record.location]
+--             ]
+--           ]
 
-  let
-    logoEl =
-      case record.logoUrl of
-        Just url ->
-          img [ src url ] []
-        Nothing -> span [] []
-
-  in
-    a [ class "event-card meetup grow", href record.meetupPageLink]
-          [ div [ class "meetup-header"]
-            [ h3 []
-                [text record.meetupTitle]
-            , logoEl
-            ]
-          , div [ class "meetup-footer"]
-            [ h4 []
-                [text record.meetupGroupName]
-            , div [] [text record.date]
-            , div [ class "location"] [text record.location]
-            ]
-          ]
-
-renderEvent : Event -> Html ()
+renderEvent : Event -> Html Msg
 renderEvent event =
     case event of
         ConferenceTalk record ->
             talkView record
-        Meetup record ->
-            meetupView record
+        -- Meetup record ->
+        --     meetupView record
 
-renderEvents : List Event -> Html ()
+renderEvents : List Event -> Html Msg
 renderEvents events =
     let
         eventViews = List.map renderEvent events
@@ -237,7 +284,7 @@ renderEvents events =
                 eventViews
             ]
 
-renderSuggestedConference : SuggestedConferenceR -> Html ()
+renderSuggestedConference : SuggestedConferenceR -> Html Msg
 renderSuggestedConference conf =
     tr []
         [ td [] [text conf.name]
@@ -246,7 +293,7 @@ renderSuggestedConference conf =
         , td [] [text conf.submissionDeadline]
         ]
 
-renderSuggestedConferences : List SuggestedConferenceR -> Html ()
+renderSuggestedConferences : List SuggestedConferenceR -> Html Msg
 renderSuggestedConferences confs =
     let
         rows = List.map renderSuggestedConference confs
@@ -272,11 +319,11 @@ renderSuggestedConferences confs =
             ]
 
 
-renderNewMeetupGroup : MeetupGroupR -> Html ()
+renderNewMeetupGroup : MeetupGroupR -> Html Msg
 renderNewMeetupGroup group =
   li [] [ a [href group.link] [ text group.name ]]
 
-renderNewMeetupGroups : List MeetupGroupR -> Html ()
+renderNewMeetupGroups : List MeetupGroupR -> Html Msg
 renderNewMeetupGroups groups =
     let
         lis = List.map renderNewMeetupGroup groups
@@ -288,15 +335,43 @@ renderNewMeetupGroups groups =
             , ul [] lis
             ]
 
+
+getFutureEvents : List Event -> Model -> List Event
+getFutureEvents events model =
+  let
+    isFutureEvent : Event -> Bool
+    isFutureEvent event =
+      case event of
+        ConferenceTalk data ->
+          case Date.fromString data.date of
+            Ok eventDate ->
+              case model.dateToday of
+                Just todayDate ->
+                  is SameOrAfter eventDate todayDate
+                Nothing ->
+                  False
+            Err msg ->
+              Debug.crash ("Invalid date: " ++ msg)
+
+  in
+    List.filter isFutureEvent events
+
+mainView : Model -> Html Msg
 mainView model =
-    div []
-        [ header []
-            [ h1 [] [ text "Elm Events" ]
-            ]
-        , renderEvents upcomingEvents
-        -- , renderNewMeetupGroups newMeetupGroups
-        , renderSuggestedConferences suggestedConferences
-        ]
+  case model.dateToday of
+    Just date ->
+      div []
+          [ header []
+              [ h1 [] [ text "Elm Events" ]
+              ]
+          , renderEvents (getFutureEvents upcomingEvents model)
+          -- , renderNewMeetupGroups newMeetupGroups
+          , renderSuggestedConferences suggestedConferences
+          ]
+    Nothing ->
+      div [] []
+
+
 
 -- CSS STYLES
 styles =
