@@ -135,6 +135,17 @@ upcomingEvents =
         , speakerPhotoFilename = "jose.jpg"
     }
     , ConferenceTalk
+        { conferenceName = "Chicago Coder Conference"
+        , slug = "chicago-coder-conf-2016"
+        , conferenceLink = "http://chicagocoderconference.com/cccsession/session-5-testability-maintainability-reliability-building-apps-with-elm/"
+        , talkTitle = Just "Testability, Maintainability, Reliability: Building apps with Elm"
+        , speaker = "Luke Westby"
+        , data = "7 June 2016"
+        , location = "Chicago, USA"
+        , conferenceLogoFilename = "chicago-coder-conf-2016.jpg"
+        , speakerPhotoFilename = ""
+        }
+    , ConferenceTalk
         { conferenceName = "Curry On Rome!"
         , slug = "curry-on-rome-2016"
         , conferenceLink = "http://www.curry-on.org/2016/sessions/creating-a-fun-game-with-elm.html"
