@@ -156,6 +156,17 @@ upcomingEvents =
         , conferenceLogoFilename = "curry-on-rome-2016.png"
         , speakerPhotoFilename = "curry-on-rome-2016-people.png"
         }
+    , ConferenceTalk
+        { conferenceName = "Abstractions"
+        , slug = "abstractions-2016"
+        , conferenceLink = "http://abstractions.io/"
+        , talkTitle = Just "Friendly Functional Programming For The Web"
+        , speaker = "Luke Westby"
+        , date = "18 August 2016"
+        , location = "Pittsburgh, USA"
+        , conferenceLogoFilename = ""
+        , speakerPhotoFilename = "luke.jpg"
+        }
     -- , Meetup
     --     { meetupGroupName = "Elmoin"
     --     , meetupTitle = "First Elmoin Meetup"
