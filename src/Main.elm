@@ -140,10 +140,10 @@ upcomingEvents =
         , conferenceLink = "http://chicagocoderconference.com/cccsession/session-5-testability-maintainability-reliability-building-apps-with-elm/"
         , talkTitle = Just "Testability, Maintainability, Reliability: Building apps with Elm"
         , speaker = "Luke Westby"
-        , data = "7 June 2016"
+        , date = "7 June 2016"
         , location = "Chicago, USA"
-        , conferenceLogoFilename = "chicago-coder-conf-2016.jpg"
-        , speakerPhotoFilename = ""
+        , conferenceLogoFilename = "chicago-coder-conf.jpg"
+        , speakerPhotoFilename = "luke.jpg"
         }
     , ConferenceTalk
         { conferenceName = "Curry On Rome!"
