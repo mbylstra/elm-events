@@ -164,7 +164,18 @@ upcomingEvents =
         , speaker = "Luke Westby"
         , date = "18 August 2016"
         , location = "Pittsburgh, USA"
-        , conferenceLogoFilename = ""
+        , conferenceLogoFilename = "abstractions.jpg"
+        , speakerPhotoFilename = "luke.jpg"
+        }
+    , ConferenceTalk
+        { conferenceName = "goto; Copenhagen"
+        , slug = "goto-copenhagen-2016"
+        , conferenceLink = "http://gotocon.com/cph-2016/"
+        , talkTitle = Just "Friendly Functional Programming For The Web"
+        , speaker = "Luke Westby"
+        , date = "3 October 2016"
+        , location = "Copenhagen, Denmark"
+        , conferenceLogoFilename = "goto-conference.jpg"
         , speakerPhotoFilename = "luke.jpg"
         }
     -- , Meetup
