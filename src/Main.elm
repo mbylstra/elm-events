@@ -374,6 +374,21 @@ renderSuggestedConferences confs =
                 )
             ]
 
+renderRelatedWebsites : Html Msg
+renderRelatedWebsites =
+      div [ class "related-websites"]
+          [ h2 [] [ text "Related Websites" ]
+          , p []
+              [ a [ href "http://www.elmweekly.nl/" ]
+                  [ text "Elm Weekly" ]
+              , text " – upcoming meetups and talks straight to your inbox, and lots more!"
+              ]
+          , p []
+              [ a [ href "https://elmvids.groob.io/" ]
+                  [ text "Elm Videos" ]
+              , text " – Watch videos from past conferences and meetups."
+              ]
+          ]
 
 renderNewMeetupGroup : MeetupGroupR -> Html Msg
 renderNewMeetupGroup group =
@@ -423,6 +438,7 @@ mainView model =
           , renderEvents (getFutureEvents upcomingEvents model)
           -- , renderNewMeetupGroups newMeetupGroups
           , renderSuggestedConferences suggestedConferences
+          , renderRelatedWebsites
           ]
     Nothing ->
       div [] []
