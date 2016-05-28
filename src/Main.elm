@@ -146,6 +146,17 @@ upcomingEvents =
         , speakerPhotoFilename = "luke.jpg"
         }
     , ConferenceTalk
+        { conferenceName = "Joy of Coding"
+        , slug = "joy-of-coding-2016"
+        , conferenceLink = "http://joyofcoding.org/speakers/andrea-magnorsky-claudia-doppiolash.html"
+        , talkTitle = Just "Learn to make games with Elm and cats"
+        , speaker = "Andrea Magnorsky & Claudia Doppiolash"
+        , date = "17 June 2016"
+        , location = "Rotterdam, Netherlands"
+        , conferenceLogoFilename = "joy-of-coding-2016.png"
+        , speakerPhotoFilename = "claudia-and-andrea.png"
+        }
+    , ConferenceTalk
         { conferenceName = "Curry On Rome!"
         , slug = "curry-on-rome-2016"
         , conferenceLink = "http://www.curry-on.org/2016/sessions/creating-a-fun-game-with-elm.html"
@@ -177,6 +188,17 @@ upcomingEvents =
         , location = "Copenhagen, Denmark"
         , conferenceLogoFilename = "goto-conference.jpg"
         , speakerPhotoFilename = "luke.jpg"
+        }
+    , ConferenceTalk
+        { conferenceName = "XT16"
+        , slug = "xt16"
+        , conferenceLink = "https://juxt.pro/XT16.html"
+        , talkTitle = Just "Adventures in User Interfaces"
+        , speaker = "Kris Jenkins"
+        , date = "6 October 2016"
+        , location = "Millbrook, UK"
+        , conferenceLogoFilename = "xt16.png"
+        , speakerPhotoFilename = "kris-jenkins.jpg"
         }
     -- , Meetup
     --     { meetupGroupName = "Elmoin"
@@ -246,7 +268,8 @@ confImage filename idValue =
 speakerImage : String -> Html Msg
 speakerImage filename =
     img
-        [ src ("img/" ++ filename)
+        [ class "speaker-image"
+        , src ("img/" ++ filename)
         , style
             [ ("display", "inline")
             , ("width", "200px")
@@ -312,7 +335,7 @@ renderEvents events =
         eventViews = List.map renderEvent events
     in
         div [ class "upcoming-talks"]
-            [ h2 [] [ text "Upcoming Conference Talks" ]
+            [ h2 [] [ text "Upcoming Talks and Workshops" ]
             , div [ class "talks"]
                 eventViews
             ]
