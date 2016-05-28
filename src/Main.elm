@@ -164,7 +164,7 @@ upcomingEvents =
         , speaker = "Luke Westby"
         , date = "18 August 2016"
         , location = "Pittsburgh, USA"
-        , conferenceLogoFilename = "abstractions.jpg"
+        , conferenceLogoFilename = "abstractions-2016.jpg"
         , speakerPhotoFilename = "luke.jpg"
         }
     , ConferenceTalk
