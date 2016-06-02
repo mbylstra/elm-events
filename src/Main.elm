@@ -4,8 +4,15 @@ import Html.Attributes exposing (..)
 import Maybe exposing (withDefault)
 import Date exposing (Date)
 import Task
-import Date.Extra.Compare exposing (Compare2 (SameOrAfter), is)
+import Date.Extra.Compare exposing (Compare2 (SameOrAfter, SameOrBefore), is)
+import Date.Extra.Duration
 import Result exposing (Result)
+import Http
+import String
+import Date.Format as DateFormat
+-- import Date
+
+import MeetupEvents exposing (getEvents, MeetupEvent)
 
 
 type alias ConferenceTalkR =
@@ -52,6 +59,8 @@ type Event
 getCurrentDateCmd : Cmd Msg
 getCurrentDateCmd = Task.perform (\_ -> NoOp) TodayDateFetched Date.now
 
+getMeetupEventsCmd = Task.perform (\e -> ErrorFetchingEvents e) MeetupEventsFetched getEvents
+
 
 main =
   Html.App.program
@@ -65,12 +74,21 @@ main =
 -- MODEL
 
 
-type alias Model = { dateToday : Maybe Date }
+type alias Model =
+  { dateToday : Maybe Date
+  , meetupEvents : Maybe (List MeetupEvent)
+  }
 
 model : Model
-model = { dateToday = Nothing }
+model =
+  { dateToday = Nothing
+  , meetupEvents = Nothing
+  }
 
-init = model ! [getCurrentDateCmd]
+init = model !
+  [ getCurrentDateCmd
+  , getMeetupEventsCmd
+  ]
 
 
 
@@ -83,13 +101,23 @@ init = model ! [getCurrentDateCmd]
 type Msg
   = NoOp
   | TodayDateFetched Date
+  | MeetupEventsFetched (List MeetupEvent)
+  | ErrorFetchingEvents Http.Error
 
 
 update : Msg -> Model -> (Model, Cmd Msg)
 update msg model =
-  case (Debug.log "msg" msg) of
+  -- case (Debug.log "msg" msg) of
+  case msg of
     TodayDateFetched date ->
       { model | dateToday = Just date } ! []
+    MeetupEventsFetched events ->
+      { model | meetupEvents = Just events } ! []
+    ErrorFetchingEvents e ->
+      let
+        _ = Debug.log "ErrorFetchingEvents" e
+      in
+        model ! []
     NoOp ->
       model ! []
 
@@ -296,38 +324,44 @@ talkView record =
           ]
         ]
 
--- meetupView : MeetupEventR -> Html Msg
--- meetupView record =
---
---   let
---     logoEl =
---       case record.logoUrl of
---         Just url ->
---           img [ src url ] []
---         Nothing -> span [] []
---
---   in
---     a [ class "event-card meetup grow", href record.meetupPageLink]
---           [ div [ class "meetup-header"]
---             [ h3 []
---                 [text record.meetupTitle]
---             , logoEl
---             ]
---           , div [ class "meetup-footer"]
---             [ h4 []
---                 [text record.meetupGroupName]
---             , div [] [text record.date]
---             , div [ class "location"] [text record.location]
---             ]
---           ]
+meetupView : MeetupEvent -> Html Msg
+meetupView record =
+
+  let
+    logoEl =
+      case record.logoUrl of
+        Just url ->
+          img [ src url ] []
+        Nothing -> span [] []
+
+  in
+    case record.date of
+      Just date ->
+        a [ class "event-card meetup grow", href record.meetupPageLink]
+              [ div [ class "meetup-header"]
+                [ h3 []
+                    [text record.meetupTitle]
+                , logoEl
+                ]
+              , div [ class "meetup-footer"]
+                [ h4 []
+                    [text record.meetupGroupName]
+                , div [] [text (DateFormat.format "%e %B %Y" date)]
+                , div [ class "location"] [text record.location]
+                ]
+              ]
+      Nothing ->
+        div [] []
 
 renderEvent : Event -> Html Msg
 renderEvent event =
     case event of
         ConferenceTalk record ->
             talkView record
-        -- Meetup record ->
-        --     meetupView record
+
+-- renderMeetupEvent : Meetup
+--         -- Meetup record ->
+--         --     meetupView record
 
 renderEvents : List Event -> Html Msg
 renderEvents events =
@@ -378,15 +412,23 @@ renderRelatedWebsites : Html Msg
 renderRelatedWebsites =
       div [ class "related-websites"]
           [ h2 [] [ text "Related Websites" ]
-          , p []
+          , h3 []
               [ a [ href "http://www.elmweekly.nl/" ]
                   [ text "Elm Weekly" ]
-              , text " – upcoming meetups and talks straight to your inbox, and lots more!"
               ]
           , p []
+              [ text "Upcoming meetups and talks straight to your inbox, and lots more! A very special thankyou to "
+              , a [ href "https://github.com/pootsbook" ]
+                  [ text "Philip Poots" ]
+              , text ", creator of Elm Weekly, for providing the API from which the Upcoming Meetups data is fetched for this website."
+              ]
+
+          , h3 []
               [ a [ href "https://elmvids.groob.io/" ]
                   [ text "Elm Videos" ]
-              , text " – Watch videos from past conferences and meetups."
+              ]
+          , p []
+              [ text "Watch videos from past conferences and meetups."
               ]
           ]
 
@@ -397,13 +439,13 @@ renderNewMeetupGroup group =
 renderNewMeetupGroups : List MeetupGroupR -> Html Msg
 renderNewMeetupGroups groups =
     let
-        lis = List.map renderNewMeetupGroup groups
+        list = List.map renderNewMeetupGroup groups
     in
         div [ class "new-meetup-groups"]
             [ h2 [] [text "New Meetup Groups"]
             , p [] [ text "These groups are in a formative stage and don't have any events planned yet." ]
             , p [] [ text "If you live in these areas, or are passing by, make sure you join up to get notified about the first meetup!"]
-            , ul [] lis
+            , ul [] list
             ]
 
 
@@ -427,22 +469,70 @@ getFutureEvents events model =
   in
     List.filter isFutureEvent events
 
+filterMeetupEvents : Date -> List MeetupEvent -> List MeetupEvent
+filterMeetupEvents dateToday events =
+  let
+    inTwoMonths = Date.Extra.Duration.add Date.Extra.Duration.Month 2 dateToday
+    notTooDistantFuture date =
+      case date of
+        Just date' ->
+          is SameOrBefore date' inTwoMonths
+        Nothing ->
+          False
+    isMeetupEvent event =
+      String.contains "meetup.com" event.meetupPageLink
+  in
+    List.filter
+      (\e -> (notTooDistantFuture e.date) && isMeetupEvent e )
+      events
+
+renderMeetupEvents : Date -> Maybe (List MeetupEvent) -> Html Msg
+renderMeetupEvents dateToday maybeEvents =
+  case maybeEvents of
+    Just events ->
+      let
+          filteredEvents = filterMeetupEvents dateToday events
+          eventViews = List.map meetupView filteredEvents
+      in
+          div [ class "upcoming-talks upcoming-meetups"]
+              [ h2 [] [ text "Upcoming Meetups" ]
+              , div [ class "talks"]
+                  eventViews
+              ]
+    Nothing ->
+      div [] []
+
+
 mainView : Model -> Html Msg
 mainView model =
   case model.dateToday of
     Just date ->
       div []
-          [ header []
+          [ githubForkRibbon
+          , header []
               [ h1 [] [ text "Elm Events" ]
               ]
           , renderEvents (getFutureEvents upcomingEvents model)
+          , renderMeetupEvents date model.meetupEvents
           -- , renderNewMeetupGroups newMeetupGroups
-          , renderSuggestedConferences suggestedConferences
+          -- , renderSuggestedConferences suggestedConferences
           , renderRelatedWebsites
           ]
     Nothing ->
       div [] []
 
+
+githubForkRibbon : Html msg
+githubForkRibbon =
+    a
+        [ href "https://github.com/mbylstra/elm-events" ]
+        [ img
+            [ alt "Fork me on GitHub"
+            , src "https://camo.githubusercontent.com/a6677b08c955af8400f44c6298f40e7d19cc5b2d/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f677261795f3664366436642e706e67"
+            , attribute "style" "position: absolute; top: 0; right: 0; border: 0; z-index: 100"
+            ]
+            []
+        ]
 
 
 -- CSS STYLES

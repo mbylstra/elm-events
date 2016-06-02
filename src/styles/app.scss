@@ -21,6 +21,7 @@ h2 {
 p {
   line-height: 1.5em;
   font-size: 17px;
+  max-width: 600px;
 }
 
 table {
@@ -175,7 +176,7 @@ a {
 }
 
 .related-websites {
-  margin-top: 1em;
+  margin-top: 6em;
   display: flex;
   flex-direction: column;
   align-items: center;
