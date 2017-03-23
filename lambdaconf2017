@@ -1,0 +1,41 @@
+
+http://lambdaconf.us/events/2017/lcusc.html
+
+LambdaConf is one of the largest functional programming conferences in the world, focused on foundational concepts (such as lambda calculus, type theory, category theory), functional programming languages (Haskell, Scala, PureScript, F#, Clojure, Elixir, and more), new languages and approaches in functional programming, functional programming libraries, and related areas such as dependent types, proof systems, parallel array programming, functional GPU processing, and more.
+
+Standard registration is now open at Eventbrite:
+
+https://www.eventbrite.com/e/lambdaconf-2017-registration-29839799644
+
+A complete list of sessions is online, including the following highlights:
+
+ * 6 keynotes, including one on using Haskell to model life on the blockchain, one on how programmers brains work, and one on the axes of abstraction;
+ * 8 leap workshops, including an in-depth workshop on category theory, one on optics, and one on building front-ends using PureScript Halogen;
+ * 12 hop workshops, including one introducing Coq, another diving into recursion schemes, and another teaching functional data processing;
+ * 9 de novo sessions, including on one formally specified digital logic, one on algebraic and monadic composability for distributed computing, and one on type-level REST programming;
+ * 21 educational sessions, including one on Free monads, one on high-performance Haskell, one on codata and corecursion, one on FP on Android using Frege, and another on dependently-typed programming in Haskell;
+ * 21 inspire sessions, including one on dependent-pairs, one on generative design, and one on type singletons.
+ 
+This is more than 110 hours of content, with enough variety and difficulty level for everyone. Speakers are book authors, contributors to open source libraries, researchers, and practicing functional programmers.
+
+The conference takes place in Boulder, Colorado, from May 25 - 27, at the University of Colorado Boulder in the foothills of the Rocky Mountains. Conference registration includes all sessions (including workshops), locally-catered breakfast and lunch on Thursday, Friday, and Saturday; a conference dinner on Friday night; a choice from a variety of networking activities on Sunday; free childcare and STEM workshops for children; all-gender restrooms and handicapped-accessible venues.
+
+Videos from some previous events can be found here: https://www.youtube.com/channel/UCEtohQeDqMSebi2yvLMUItg; and here: https://www.youtube.com/watch?v=JxC1ExlLjgw&list=PLE7tQUdRKcybh21_zOg8_y4f2oMKDHpUS
+
+The conference is preceded by commercial training opportunities on Monday - Tuesday, including:
+
+ * Up & Running with Elixir & Phoenix, by Brooklyn Zelenka
+ * Applied Haskell, by Michael Snoyman
+ * Advanced FP in Scala, by John A. De Goes
+ * Introduction to FP, by David Koontz
+ * Mastering Apache Spark, by Pawel Szulc
+ * Mastering Elm, by Isaac Shapira
+ 
+On Wednesday, several free mini-conferences are co-located with LambdaConf:
+
+ * PureScript Conf 2017
+ * Introduction to FP with Haskell
+
+For more information on LambdaConf, the commercial training workshops, or the mini-conferences, please visit the website:
+
+http://lambdaconf.us/events/2017/lcusc.html
